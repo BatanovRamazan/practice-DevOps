@@ -19,7 +19,11 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd app    # Укажите точное имя директории
+          npm install
 
       - name: Run tests
-        run: npm test
+        run: |
+          cd app    # Укажите точное имя директории
+          npm test
