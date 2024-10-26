@@ -20,10 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd app    # Укажите точное имя директории
           npm install
 
       - name: Run tests
         run: |
-          cd app    # Укажите точное имя директории
           npm test
