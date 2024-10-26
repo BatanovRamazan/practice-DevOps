@@ -1,25 +1,34 @@
-name: Node.js CI
+name: Node.js CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2  # Шаг клонирования репозитория
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Шаг клонирования репозитория
 
-      - name: Set up Node.js        # Настройка Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2  # Устанавливаем Node.js
         with:
-          node-version: '14'
+          node-version: '14'  # Версия Node.js (измените на нужную)
 
-      - name: Install dependencies  # Установка зависимостей
-        run: npm install
+      - name: Install dependencies
+        run: npm install  # Установка зависимостей через package.json
 
-      - name: Run tests             # Запуск тестов
-        run: npm test
+      - name: Run tests
+        run: npm test  # Запуск тестов
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'Roma'
+          git config --global user.email 'batanov.ramazan05@gmail.com'
+          git commit -m "Auto-commit from GitHub Actions" || echo "Nothing to commit"
