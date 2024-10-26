@@ -21,11 +21,15 @@ jobs:
         with:
           node-version: '14'  # Версия Node.js (измените на нужную)
 
-      - name: Install dependencies
-        run: npm install  # Установка зависимостей через package.json
+      - name: Install dependencies in subdirectory
+        run: |
+          cd app  # Переходим в поддиректорию, где находится package.json
+          npm install  # Устанавливаем зависимости
 
-      - name: Run tests
-        run: npm test  # Запуск тестов
+      - name: Run tests in subdirectory
+        run: |
+          cd app  # Переходим в поддиректорию, где находятся тесты
+          npm test  # Запускаем тесты
 
       - name: Commit changes
         run: |
