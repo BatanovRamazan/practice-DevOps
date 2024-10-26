@@ -23,7 +23,7 @@ jobs:
         run: npm install  # Установка зависимостей через package.json в корне
 
       - name: Run tests
-        run: npm test  # Запуск тестов
+        run: python main.py  # Запуск тестов
 
       - name: Commit changes
         run: |
