@@ -2,11 +2,9 @@ name: Node.js CI Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
@@ -19,17 +17,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2  # Устанавливаем Node.js
         with:
-          node-version: '14'  # Версия Node.js (измените на нужную)
+          node-version: '14'
 
-      - name: Install dependencies in subdirectory
-        run: |
-          cd app  # Переходим в поддиректорию, где находится package.json
-          npm install  # Устанавливаем зависимости
+      - name: Install dependencies
+        run: npm install  # Установка зависимостей через package.json в корне
 
-      - name: Run tests in subdirectory
-        run: |
-          cd app  # Переходим в поддиректорию, где находятся тесты
-          npm test  # Запускаем тесты
+      - name: Run tests
+        run: npm test  # Запуск тестов
 
       - name: Commit changes
         run: |
