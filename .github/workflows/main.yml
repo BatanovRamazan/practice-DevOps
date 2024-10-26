@@ -11,17 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2  # Шаг клонирования репозитория
 
-      - name: Set up Node.js
+      - name: Set up Node.js        # Настройка Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
-      - name: Install dependencies
-        run: |
-          npm install
+      - name: Install dependencies  # Установка зависимостей
+        run: npm install
 
-      - name: Run tests
-        run: |
-          npm test
+      - name: Run tests             # Запуск тестов
+        run: npm test
