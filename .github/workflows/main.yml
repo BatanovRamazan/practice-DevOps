@@ -11,14 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - name: Install dependencies
-      run: |
-        cd path/to/project # Если ваш проект не в корне, укажите правильный путь
-        npm install
-    - name: Run tests
-      run: npm test
+      # Шаг 1: Клонирование репозитория
+      - uses: actions/checkout@v2
+
+      # Шаг 2: Установка Node.js версии 14
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Шаг 3: Установка зависимостей в поддиректории
+      - name: Install dependencies
+        run: |
+          cd my-app    # Убедитесь, что заменили 'my-app' на правильное имя директории
+          npm install
+
+      # Шаг 4: Запуск тестов
+      - name: Run tests
+        run: |
+          cd my-app    # Убедитесь, что заменили 'my-app' на правильное имя директории
+          npm test
